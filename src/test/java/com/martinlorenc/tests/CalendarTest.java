@@ -10,10 +10,6 @@ import org.openqa.selenium.By;
 
 public class CalendarTest extends BaseTest {
 
-    @Override
-    public void setUpTest() {
-    }
-
     @Test
     @Description("Test checking if current month is displayed properly")
     @Severity(SeverityLevel.NORMAL)

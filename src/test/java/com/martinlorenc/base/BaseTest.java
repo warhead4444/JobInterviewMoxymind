@@ -21,7 +21,6 @@ public abstract class BaseTest {
     @BeforeEach
     public void setUp() throws MalformedURLException {
         setupDriver();
-        setUpTest();
     }
 
     private void setupDriver() throws MalformedURLException {
@@ -46,8 +45,6 @@ public abstract class BaseTest {
             driver.quit();
         }
     }
-
-    protected abstract void setUpTest();
 
     public CalendarPage getCalendarPage() {
         return calendarPage;

@@ -10,7 +10,7 @@ public class TestUtils {
 
     public static void handleAlertIfPresent(AppiumDriver driver) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().accept();
         } catch (Exception e) {
