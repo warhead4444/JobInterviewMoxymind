@@ -1,36 +1,27 @@
 package com.martinlorenc.pages;
 
+import com.martinlorenc.base.BasePage;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class CalendarPage {
-    private AppiumDriver driver;
+public class CalendarPage extends BasePage {
+
     private LocalDate today;
     private DateTimeFormatter monthFormatter;
     private DateTimeFormatter dayFormatter;
 
     public CalendarPage(AppiumDriver driver) {
-        this.driver = driver;
+        super(driver);
         this.today = LocalDate.now();
         this.monthFormatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH);
         this.dayFormatter = DateTimeFormatter.ofPattern("EEEE, d MMMM", Locale.ENGLISH);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-    }
-
-    public WebElement findElement(By locator) {
-        try {
-            return driver.findElement(locator);
-        } catch (NoSuchElementException e) {
-            System.out.println("Element nebol nájdený: " + locator);
-            throw e;
-        }
     }
 
     private String generateXPathForDateElement(String type) {
@@ -50,11 +41,6 @@ public class CalendarPage {
             default:
                 throw new IllegalArgumentException("Invalid type: " + type);
         }
-    }
-
-    private void clickElement(By locator) {
-        WebElement element = findElement(locator);
-        element.click();
     }
 
     public String getTodayFormatted() {

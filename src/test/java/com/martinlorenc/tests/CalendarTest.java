@@ -4,7 +4,7 @@ import com.martinlorenc.base.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -25,7 +25,7 @@ public class CalendarTest extends BaseTest {
                 .findElement(By.xpath("//XCUIElementTypeButton[contains(@name, 'Current month')]"))
                 .getAttribute("label");
 
-        Assert.assertEquals("Wrong month selected!", expectedMonth, currentMonth);
+        Assertions.assertEquals(expectedMonth, currentMonth, "Wrong month selected!");
     }
 
     @Test
@@ -39,6 +39,6 @@ public class CalendarTest extends BaseTest {
                 .findElement(By.xpath("//XCUIElementTypeOther[contains(@name, 'Today')]"))
                 .getAttribute("label");
 
-        Assert.assertEquals("Wrong day selected!", expectedDay, currentDay);
+        Assertions.assertEquals(expectedDay, currentDay, "Wrong day selected!" );
     }
 }
